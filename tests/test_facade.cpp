@@ -1,7 +1,7 @@
 // test_facade.cpp
 
 #include <iostream>
-#include "main.cpp"
+#include "../src/main.cpp
 
 void test_facade_operation1() {
   Facade facade;
