@@ -1,26 +1,35 @@
-// test_facade.cpp
+// test.cpp
 
 #include <iostream>
-#include "../src/main.cpp
 
-void test_facade_operation1() {
-  Facade facade;
-  std::cout << "Testing Facade Operation 1 ...n";
-  facade.operation1();
-  // You could add some condition checks here and print the test result
-  std::cout << "Test Passed.n";
+// Функция для сравнения двух чисел
+bool isEqual(int a, int b) {
+    return a == b;
 }
 
-void test_facade_operation2() {
-  Facade facade;
-  std::cout << "Testing Facade Operation 2 ...n";
-  facade.operation2();
-  // You could add some condition checks here and print the test result
-  std::cout << "Test Passed.n";
+// Функция для выполнения тестов
+void runTests() {
+    int x = 5;
+    int y = 5;
+    std::cout << "Test 1: ";
+    if (isEqual(x, y)) {
+        std::cout << "Passed" << std::endl;
+    } else {
+        std::cout << "Failed" << std::endl;
+    }
+
+    int z = 10;
+    std::cout << "Test 2: ";
+    if (!isEqual(x, z)) {
+        std::cout << "Passed" << std::endl;
+    } else {
+        std::cout << "Failed" << std::endl;
+    }
 }
 
 int main() {
-  test_facade_operation1();
-  test_facade_operation2();
-  return 0;
+    // Запуск тестов
+    runTests();
+
+    return 0;
 }
