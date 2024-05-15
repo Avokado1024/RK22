@@ -21,14 +21,11 @@ jobs:
       - name: Install CMake
         run: sudo apt-get install -y cmake
 
-      - name: Checkout GoogleTest
-        run: |
-          git clone https://github.com/google/googletest.git
-          mkdir -p googletest/build
-          cd googletest/build
-          cmake ..
-          make
-          sudo cp lib/*.a /usr/lib
+      - name: Remove existing build directory
+        run: rm -rf build
+
+      - name: Create build directory
+        run: mkdir build
 
       - name: Configure CMake
         run: cmake -S . -B build
