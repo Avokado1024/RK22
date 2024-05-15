@@ -1,6 +1,5 @@
 // tests/test_facade.cpp
 
-#include <gtest/gtest.h>
 #include "../src/main.cpp"
 
 // Тестируем, что подсистемы вызываются корректно
