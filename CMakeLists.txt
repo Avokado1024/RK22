@@ -12,3 +12,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Добавить исходные файлы
 add_executable(FacadePattern src/main.cpp)
 
+# Добавить тесты
+enable_testing()
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+add_executable(FacadePatternTest tests/test_facade.cpp)
+target_link_libraries(FacadePatternTest ${GTEST_LIBRARIES} pthread)
+
+add_test(NAME FacadePatternTest COMMAND FacadePatternTest)
+
