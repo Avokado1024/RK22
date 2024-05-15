@@ -25,7 +25,9 @@ jobs:
         run: ls -la
 
       - name: Verify CMakeLists.txt location
-        run: test -e CMakeLists.txt
+        run: |
+          ls -la
+          test -e CMakeLists.txt || { echo "CMakeLists.txt not found"; exit 1; }
 
       - name: Remove existing build directory
         run: rm -rf build
