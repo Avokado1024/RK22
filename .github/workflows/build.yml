@@ -1,46 +1,32 @@
-# .github/workflows/build.yml
-
-name: CMake
+name: Run Tests and Build
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build:
+  test_and_build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Install CMake
-        run: sudo apt-get install -y cmake
+    - name: Create build directory
+      run: mkdir build
 
-      - name: Verify CMakeLists.txt location
-        run: test -e CMakeLists.txt
+    - name: Configure CMake
+      run: cmake -S . -B build
 
-      - name: Remove existing build directory
-        run: rm -rf build
+    - name: Build
+      run: cmake --build build --config Release
 
-      - name: Create build directory
-        run: mkdir build
+    - name: Run tests
+      run: cd build && ctest -C Release --output-on-failure
 
-      - name: Configure CMake
-        run: cmake -S . -B build
-
-      - name: Build
-        run: cmake --build build
-
-      - name: Run tests
-        run: ctest --test-dir build
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: FacadePattern
-          path: build/FacadePattern
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: executable
+        path: build/<имя_вашего_исполняемого_файла>
