@@ -46,22 +46,29 @@ private:
   SubsystemC *subsystemC;
 };
 
-// Функция для проверки работы метода operation1()
+
 void testOperation1()
 {
   std::cout << "Running Operation 1 test..." << std::endl;
   Facade facade;
-  facade.operation1(); // Вызов метода, который должен вызвать методы suboperation() у подсистем A и B
+  facade.operation1(); 
   std::cout << "Operation 1 test completed" << std::endl;
 }
 
-// Функция для проверки работы метода operation2()
 void testOperation2()
 {
   std::cout << "Running Operation 2 test..." << std::endl;
   Facade facade;
-  facade.operation2(); // Вызов метода, который должен вызвать метод suboperation() у подсистемы C
+  facade.operation2(); 
   std::cout << "Operation 2 test completed" << std::endl;
+}
+void testCombinedOperations()
+{
+  std::cout << "Running Combined Operations test..." << std::endl;
+  Facade facade;
+  facade.operation1(); 
+  facade.operation2(); 
+  std::cout << "Combined Operations test completed" << std::endl;
 }
 
 // Функция для запуска всех тестов
@@ -69,10 +76,11 @@ void runTests()
 {
   testOperation1();
   testOperation2();
-}
+  testCombinedOperations(); }
+
 
 int main()
 {
-  runTests(); // Запуск всех тестов
+  runTests(); 
   return 0;
 }
