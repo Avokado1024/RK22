@@ -14,7 +14,6 @@ add_executable(FacadePattern src/main.cpp)
 
 # Добавить тесты
 enable_testing()
-include_directories(${GTEST_INCLUDE_DIRS})
 
 add_executable(FacadePatternTest tests/test_facade.cpp)
 target_link_libraries(FacadePatternTest ${GTEST_LIBRARIES} pthread)
